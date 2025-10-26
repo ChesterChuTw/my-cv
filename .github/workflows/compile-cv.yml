@@ -22,7 +22,8 @@ jobs:
           root_file: cv.tex
           latexmk_use_xelatex: true
           args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv -outdir=build
-          extra_system_packages: 'noto-fonts-cjk noto-fonts-emoji'
+          extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
+          pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
