@@ -34,16 +34,16 @@ jobs:
           # Build using xelatex via latexmk to ensure fonts (as in cv.tex header)
           latexmk -pdf -xelatex -interaction=nonstopmode -file-line-error -halt-on-error -jobname=my_cv cv.tex
 
-      - name: Rename output to chester_cv.pdf
+      - name: Rename output to chesterchu_cv.pdf
         run: |
           # latexmk typically produces cv.pdf; handle a couple of common names
-          if [ -f my_cv.pdf ]; then mv my_cv.pdf chester_cv.pdf; fi
+          if [ -f my_cv.pdf ]; then mv my_cv.pdf chesterchu_cv.pdf; fi
 
-      - name: Upload chester_cv.pdf as artifact
+      - name: Upload chesterchu_cv.pdf as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chester_cv
-          path: chester_cv.pdf
+          name: chesterchu_cv
+          path: chesterchu_cv.pdf
 
       - name: Commit generated PDF back to repo (optional)
         if: ${{ github.event_name == 'push' }}
@@ -54,11 +54,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # Stage the generated PDF (ignore failure if not present)
-          git add chester_cv.pdf || true
+          git add chesterchu_cv.pdf || true
           # If there are staged changes, commit and push
           if git diff --staged --quiet; then
-            echo "No changes to commit for chester_cv.pdf"
+            echo "No changes to commit for chesterchu_cv.pdf"
           else
-            git commit -m "chore: update chester_cv.pdf (auto-generated)"
+            git commit -m "chore: update chesterchu_cv.pdf (auto-generated)"
             git push
           fi
