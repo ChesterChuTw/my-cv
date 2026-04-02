@@ -16,20 +16,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build with latex-action (XeLaTeX + latexmk)
+      - name: Build SRE CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: cv.tex
+          root_file: sre/cv.tex
           latexmk_use_xelatex: true
-          args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv
+          work_in_root_file_dir: true
+          args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_sre
           extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
           pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
 
-      - name: Upload artifact
+      - name: Build AIOps CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: aiops/cv.tex
+          latexmk_use_xelatex: true
+          work_in_root_file_dir: true
+          args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_aiops
+          extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
+          pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
+
+      - name: Build Dev CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: dev/cv.tex
+          latexmk_use_xelatex: true
+          work_in_root_file_dir: true
+          args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_dev
+          extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
+          pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: chesterchu_cv
-          path: chesterchu_cv.pdf
+          name: chesterchu_cvs
+          path: |
+            sre/chesterchu_cv_sre.pdf
+            aiops/chesterchu_cv_aiops.pdf
+            dev/chesterchu_cv_dev.pdf
 
       - name: Configure auth for push
         if: ${{ github.event_name == 'push' }}
@@ -38,16 +62,16 @@ jobs:
         run: |
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}"
 
-      - name: Commit PDF back to repo (optional)
+      - name: Commit PDFs back to repo
         if: ${{ github.event_name == 'push' }}
         run: |
           set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add chesterchu_cv.pdf || true
+          git add sre/chesterchu_cv_sre.pdf aiops/chesterchu_cv_aiops.pdf dev/chesterchu_cv_dev.pdf || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update chesterchu_cv.pdf (auto-generated)"
+            git commit -m "chore: update CV PDFs (auto-generated)"
             git push
           fi

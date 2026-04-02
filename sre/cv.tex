@@ -1,0 +1,41 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% SRE / Platform Engineer / DevOps Version
+
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Sans CJK TC}
+\setCJKsansfont{Noto Sans CJK TC}
+\setCJKmonofont{Noto Sans Mono CJK TC}
+\linespread{1.15}
+
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+\fontdir[../fonts/]
+
+\colorlet{awesome}{text}
+\setbool{acvSectionColorHighlight}{false}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\name{}{Chien-Hsien Chu}
+\mobile{(+886) 975-931-286}
+\email{chester850117@gmail.com}
+\github{ChesterChuTw}
+
+\begin{document}
+
+\makecvheader
+\makecvfooter
+  {}
+  {}
+  {\thepage}
+
+\input{../cv/education}
+\input{../cv/honors}
+\input{professional_experience}
+\newpage
+\input{../cv/work_experience}
+\input{../cv/publication}
+\input{../cv/invited_talks}
+
+\end{document}
