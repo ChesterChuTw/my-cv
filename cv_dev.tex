@@ -1,6 +1,7 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% SRE / Platform Engineer / DevOps Version
+% Full-Stack / Software Developer Version
+% Target: General Dev roles (product companies, startups, SIs)
 
 \documentclass[11pt, a4paper]{awesome-cv}
 
@@ -11,7 +12,7 @@
 \linespread{1.15}
 
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-\fontdir[../fonts/]
+\fontdir[fonts/]
 
 \colorlet{awesome}{text}
 \setbool{acvSectionColorHighlight}{false}
@@ -30,12 +31,11 @@
   {}
   {\thepage}
 
-\input{../cv/education}
-\input{../cv/honors}
-\input{professional_experience}
+\input{cv/education}
+\input{dev/work_experience}
 \newpage
-\input{../cv/work_experience}
-\input{../cv/publication}
-\input{../cv/invited_talks}
+\input{dev/professional_experience}
+\input{dev/technical_skills}
+\input{cv/honors}
 
 \end{document}

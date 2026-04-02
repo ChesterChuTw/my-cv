@@ -19,9 +19,8 @@ jobs:
       - name: Build SRE CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: sre/cv.tex
+          root_file: cv_sre.tex
           latexmk_use_xelatex: true
-          work_in_root_file_dir: true
           args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_sre
           extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
           pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
@@ -29,9 +28,8 @@ jobs:
       - name: Build AIOps CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: aiops/cv.tex
+          root_file: cv_aiops.tex
           latexmk_use_xelatex: true
-          work_in_root_file_dir: true
           args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_aiops
           extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
           pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
@@ -39,9 +37,8 @@ jobs:
       - name: Build Dev CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: dev/cv.tex
+          root_file: cv_dev.tex
           latexmk_use_xelatex: true
-          work_in_root_file_dir: true
           args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_dev
           extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
           pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
@@ -51,9 +48,9 @@ jobs:
         with:
           name: chesterchu_cvs
           path: |
-            sre/chesterchu_cv_sre.pdf
-            aiops/chesterchu_cv_aiops.pdf
-            dev/chesterchu_cv_dev.pdf
+            chesterchu_cv_sre.pdf
+            chesterchu_cv_aiops.pdf
+            chesterchu_cv_dev.pdf
 
       - name: Configure auth for push
         if: ${{ github.event_name == 'push' }}
@@ -68,7 +65,7 @@ jobs:
           set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sre/chesterchu_cv_sre.pdf aiops/chesterchu_cv_aiops.pdf dev/chesterchu_cv_dev.pdf || true
+          git add chesterchu_cv_sre.pdf chesterchu_cv_aiops.pdf chesterchu_cv_dev.pdf || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
