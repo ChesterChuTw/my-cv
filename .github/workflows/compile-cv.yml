@@ -43,6 +43,15 @@ jobs:
           extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
           pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
 
+      - name: Build Google CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv_google.tex
+          latexmk_use_xelatex: true
+          args: -interaction=nonstopmode -file-line-error -halt-on-error -jobname=chesterchu_cv_google
+          extra_system_packages: 'fontconfig font-noto-cjk font-wqy-zenhei'
+          pre_compile: "fc-cache -fv && fc-list | grep -i 'cjk\\|wqy' || true"
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -51,6 +60,7 @@ jobs:
             chesterchu_cv_sre.pdf
             chesterchu_cv_aiops.pdf
             chesterchu_cv_dev.pdf
+            chesterchu_cv_google.pdf
 
       - name: Configure auth for push
         if: ${{ github.event_name == 'push' }}
@@ -65,7 +75,7 @@ jobs:
           set -e
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add chesterchu_cv_sre.pdf chesterchu_cv_aiops.pdf chesterchu_cv_dev.pdf || true
+          git add chesterchu_cv_sre.pdf chesterchu_cv_aiops.pdf chesterchu_cv_dev.pdf chesterchu_cv_google.pdf || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
