@@ -5,8 +5,7 @@
 
 %-------------------------------------------------------------------------------
 %	CONTENT
-%	Dev version: Abbreviated to 3 entries most relevant to Dev roles.
-%	Removes pure infra/research detail; keeps DevOps workflow and cloud context.
+%	Dev version: Dev-relevant entries first; research/pure-infra entries moved to end.
 %-------------------------------------------------------------------------------
 \begin{cventries}
 
@@ -19,8 +18,10 @@
     {Jul. 2024 -- Present} % Date(s)
     {
       \begin{cvitems}
-        \item {Migrated Kubernetes platform to an immutable, GitOps architecture using \textbf{Talos Linux} and \textbf{Flux CD}; managed multi-application upgrades with rollbackable database migrations.}
-        \item {Integrated \textbf{Grafana stack}, \textbf{Keycloak}, \textbf{Velero}, and \textbf{MinIO} for observability, access control, and backup.}
+        \item {Independently migrated a Kubernetes platform from \textbf{Kubespray + Terraform} to an immutable, GitOps architecture using \textbf{Talos Linux} and \textbf{Flux CD}, including cluster bootstrap, node lifecycle automation, and PV-level data migration.}
+        \item {Executed multi-application, multi-version upgrades involving rollbackable database upgrades and data migrations.}
+        \item {Integrated \textbf{Velero}, \textbf{MinIO}, \textbf{Grafana stack}, \textbf{Keycloak}, and others for backup, storage, access control, and so on.}
+        \item {Managed \textbf{Harvester} clusters and migrated to \textbf{Proxmox VE} for improved stability and flexibility.}
       \end{cvitems}
     }
 
@@ -46,6 +47,47 @@
     {
       \begin{cvitems}
         \item {Built \textbf{Kubernetes} infrastructure for institutional systems and enhanced \textbf{GitLab CI} pipelines to improve delivery reliability.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {System Teaching Assistant, CSIT, NYCU} % Job title
+    {Kubernetes Networking and Security Enhancement for Department Infrastructure} % Project title
+    {} % Location
+    {Jul. 2024 -- Present} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Migrated networking from \textbf{Flannel} to \textbf{Calico} for fine-grained \textbf{NetworkPolicy} enforcement.}
+        \item {Implemented \textbf{Istio Egress Gateway} for unified outbound traffic management.}
+        \item {Evaluated \textbf{External Secrets Operator (ESO)} and \textbf{OpenBao (Vault fork)} for Kubernetes secret management.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Graduate Student Assistant, Wireless \& Internet Lab (WinLab), NYCU} % Job title
+    {Multi-Cluster Management System} % Project title
+    {} % Location
+    {Sep. 2023 -- Jan. 2024} % Date(s)
+    {
+      \begin{cvitems}
+        \item {\textbf{Multi‑cluster management system} integrating \textbf{Karmada}, \textbf{Cilium}, and \textbf{Thanos} for orchestration and observability.}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {Graduate Research Assistant, Wireless \& Internet Lab (WinLab), NYCU} % Job title
+    {A Closed-Loop Automated Operation Framework for E2E NS (M.S. Thesis)} % Project title
+    {} % Location
+    {Feb. 2026 -- Present} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Non-invasive traces and RED metrics generation via \textbf{eBPF}, without NF code changes.}
+        \item {\textbf{OTel}-based logs, metrics, and traces collection and cross-modal correlation across O-Cloud clusters.}
+        \item {Automated anomaly detection with \textbf{AI-agent-assisted RCA} to reduce MTTD.}
+        \item {Safety-first assisted remediation via \textbf{MCP Tool Server} to reduce MTTR.}
       \end{cvitems}
     }
 
