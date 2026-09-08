@@ -609,9 +609,9 @@
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\}
+    \entrypositionstyle{#1} & \entrydatestyle{#4} \\[-4.0mm]
     \multicolumn{2}{L{\textwidth}}{\linespread{1.3}\selectfont\descriptionstyle{#5}}
   \end{tabular*}%
   \par\vspace{\cventrysep} % <<< 加這行（沒有這行就不會拉開）
@@ -623,9 +623,9 @@
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth} R{0cm}}
     \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\}
+    \entrypositionstyle{#1} & \entrydatestyle{#4} \\[-4.0mm]
     \multicolumn{2}{L{\textwidth}}{\linespread{1.3}\selectfont\descriptionstyle{#5}}
   \end{tabular*}%
 }
@@ -692,7 +692,6 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
