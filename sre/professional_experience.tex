@@ -18,11 +18,12 @@
     {Feb. 2026 -- Sep. 2026} % Date(s)
     {
       \begin{cvitems}
-        \item {Built an End-to-End Observability and Auto-Remediation Platform for multi-cluster \textbf{Kubernetes}, covering telemetry collection, cross-service correlation, alerting, root-cause analysis (RCA), and gated remediation.}
-        \item {Produced per-request traces and RED Metrics for third-party services via \textbf{eBPF} and \textbf{OpenTelemetry}, \textbf{with no code changes}.}
-        \item {Built an \textbf{LLM Agent} that performs RCA over live telemetry; an ablation across multiple models and fault scenarios showed that injecting environment knowledge improves accuracy while reducing investigation cost.}
-        \item {Routed each incident to automated, human-approved, or escalated remediation via a Case Knowledge Base.}
-        \item {Engineered a Transparent State-Recovery Proxy that restores a stateful service's in-memory state after a restart, transparently to its peers.}
+        \item {Built an End-to-End Observability and Auto-Remediation Platform for multi-cluster \textbf{Kubernetes}: Non-Intrusive Telemetry Collection and Correlation, Fault Detection, Root-Cause Analysis, and Guarded Remediation.}
+        \item {Telemetry Collection and Generation: \textbf{eBPF} auto-instrumentation (\textbf{Grafana Beyla}) yielding traces and RED Metrics with no code changes, shipped over \textbf{OTLP} by \textbf{OpenTelemetry Collectors}.}
+        \item {Telemetry Storage and Fault Detection: \textbf{Prometheus}, \textbf{Loki}, \textbf{Tempo} on \textbf{MinIO}; \textbf{Grafana}, \textbf{Alertmanager}.}
+        \item {LLM-Based RCA Agent: a bounded investigation loop over live telemetry, guided by injected environment knowledge.}
+        \item {RAG-Based Recovery Agent: Knowledge Base retrieval, then \textbf{Auto} / \textbf{Approval} / \textbf{Escalation} remediation over \textbf{MCP}.}
+        \item {Transparent State-Recovery Proxy: record-and-replay recovery of a stateful service's in-memory state after a restart.}
       \end{cvitems}
     }
 
